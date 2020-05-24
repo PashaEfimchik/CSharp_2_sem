@@ -1,0 +1,157 @@
+№2
+Задание 1.
+
+...............................
+using System;
+using System.Globalization;
+namespace Lab_2_C_sharp__Zad_1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DateTime now1 = DateTime.Now;
+            string str1 = now1.ToString();
+            Console.WriteLine("1-oй формат даты:\n");
+            Console.WriteLine(now1.ToString("hh:mm:ss dddd MMMM yyyy\n"));
+            int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0, n5 = 0, n6 = 0, n7 = 0, n8 = 0, n9 = 0;
+            foreach (Char c in str1)
+            {
+                if (c == '0')
+                    n0++;
+                else if (c == '1')
+                    n1++;
+                else if (c == '2')
+                    n2++;
+                else if (c == '3')
+                    n3++;
+                else if (c == '4')
+                    n4++;
+                else if (c == '5')
+                    n5++;
+                else if (c == '6')
+                    n6++;
+                else if (c == '7')
+                    n7++;
+                else if (c == '8')
+                    n8++;
+                else if (c == '9')
+                    n9++;
+            }
+            Console.WriteLine("Количество \n -0- :" + n0 + "\n -1- :" + n1 + "\n -2- :" + n2 + "\n -3- :" + n3 + "\n -4- :" + n4);
+            Console.WriteLine(" -5- :" + n5 + "\n -6- :" + n6 + "\n -7- :" + n7 + "\n -8- :" + n8 + "\n -9- :" + n9);
+            DateTime now2 = DateTime.Now;
+            Console.WriteLine("\n2-ый формат даты:\n");
+            Console.WriteLine(now2.ToString("hh:mm:ss | dd MM yyyy\n"));
+            string str2 = now2.ToString();
+            int k0 = 0, k1 = 0, k2 = 0, k3 = 0, k4 = 0, k5 = 0, k6 = 0, k7 = 0, k8 = 0, k9 = 0;
+            foreach (Char z in str2)
+            {
+                if (z == '0')
+                    k0++;
+                else if (z == '1')
+                    k1++;
+                else if (z == '2')
+                    k2++;
+                else if (z == '3')
+                    k3++;
+                else if (z == '4')
+                    k4++;
+                else if (z == '5')
+                    k5++;
+                else if (z == '6')
+                    k6++;
+                else if (z == '7')
+                    k7++;
+                else if (z == '8')
+                    k8++;
+                else if (z == '9')
+                    k9++;
+            }
+            Console.WriteLine("Количество \n -0- :" + k0 + "\n -1- :" + k1 + "\n -2- :" + k2 + "\n -3- :" + k3 + "\n -4- :" + k4);
+            Console.WriteLine(" -5- :" + k5 + "\n -6- :" + k6 + "\n -7- :" + k7 + "\n -8- :" + k8 + "\n -9- :" + k9);
+            Console.ReadKey();
+        }
+    }
+}
+
+
+Задание 2.
+
+...................................
+
+using System;
+using System.Text;
+
+namespace Lab_2_C_sharp_zad_2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter string: ");
+            StringBuilder a = new StringBuilder(Console.ReadLine());
+            string input = a.ToString();
+            Console.WriteLine($"\nInput string: {input}");
+            string output = "";
+            for (int i = input.Length - 1; i >= 0; i--)
+            {
+                output += input[i];
+            }
+            Console.WriteLine($"\nReverse: {output}");
+            Console.ReadKey();
+
+        }
+    }
+}
+
+Задание 3.
+
+.................................
+
+using System;
+using System.Globalization;
+
+namespace Lab_2_C_sharp__zad_3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("x1=");
+            double x1 = double.Parse(Console.ReadLine());
+            Console.Write("y1=");
+            double y1 = double.Parse(Console.ReadLine());
+            Console.Write("x2=");
+            double x2 = double.Parse(Console.ReadLine());
+            Console.Write("y2=");
+            double y2 = double.Parse(Console.ReadLine());
+            Console.Write("x3=");
+            double x3 = double.Parse(Console.ReadLine());
+            Console.Write("y3=");
+            double y3 = double.Parse(Console.ReadLine());
+            Console.WriteLine("\nДлины сторон:\nA=" + Length(x1, y1, x2, y2) + "\nB=" + Length(x2, y2, x3, y3) + "\nC=" + Length(x1, y1, x3, y3));
+            Console.WriteLine("\nПериметр треугольника: " + Perimetr(Length(x1, y1, x2, y2), Length(x2, y2, x3, y3), Length(x1, y1, x3, y3)));
+            Console.WriteLine("\nПлощадь треугольника: " + Area(x1, y1, x2, y2, x3, y3));
+            Console.WriteLine("\nВысота треугольника: " + 2 * Area(x1, y1, x2, y2, x3, y3) / Length(x1, y1, x2, y2));
+            Console.WriteLine("\nРадиус вписанной окружности: " + 2 * Area(x1, y1, x2, y2, x3, y3) / Perimetr(Length(x1, y1, x2, y2), Length(x2, y2, x3, y3), Length(x1, y1, x3, y3)));
+            Console.WriteLine("\nРадиус описанной окружности: " + (Length(x1, y1, x2, y2) * Length(x2, y2, x3, y3) * Length(x1, y1, x3, y3)) / (4 * Area(x1, y1, x2, y2, x3, y3)));
+            double Kab = (y2 - y1) / (x2 - x1), Kbc = (y3 - y2) / (x3 - x2), Kac = (y1 - y3) / (x1 - x3);
+            double A = Math.Atan(Math.Abs((Kac - Kab) / (1 + Kac * Kab))), B = Math.Atan(Math.Abs((Kab - Kbc) / (1 + Kab * Kbc))), C = Math.Atan(Math.Abs((Kac - Kbc) / (1 + Kac * Kbc)));
+            Console.WriteLine("\nУглы треугольника ABC:\nA=" + A * 57.29 + "\nB=" + B * 57.29 + "\nC=" + C * 57.29);
+            Console.ReadKey();
+        }
+        static double Length(double x1, double y1, double x2, double y2)
+        {
+            return Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
+        }
+        static double Perimetr(double a, double b, double c)
+        {
+            return a + b + c;
+        }
+        static double Area(double x1, double y1, double x2, double y2, double x3, double y3)
+        {
+            return Math.Abs(0.5 * ((x3 - x1) * (y3 - y2) - (x3 - x2) * (y3 - y1)));
+        }
+    }
+}
