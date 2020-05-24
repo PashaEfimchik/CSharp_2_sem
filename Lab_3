@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+
+namespace Lab_3
+{
+    class Student
+    {
+        public string name 
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public string surname
+        {
+            get { return surname; }
+            set { surname = value; }
+        }
+        public int age 
+        {
+            get { return age; }
+            set { age = value; }
+        }
+        public int course 
+        { 
+            get { return course; } 
+            set { course = value; } 
+        }
+        public string spec 
+        { 
+            get { return spec; }
+            set { spec = value; } 
+        }
+        public int id 
+        { 
+            get { return id; } 
+            set { id = value; } 
+        }
+        public Student(int Id, string Name, string Surname, int Age, int Course, string Spec)
+        {
+            name = Name;
+            surname = Surname;
+            age = Age;
+            course = Course;
+            spec = Spec;
+            id = Id;
+        }
+    }
+    class Program
+    {
+        static void ShowInfo(List<Student> obj)
+        {
+            Console.WriteLine("\nid: {0}\nФамилия: {1}\nИмя: {2}\nВозраст: {3}\nКурс: {4}\nСпециальность: {5}", obj[0].id, obj[0].surname, obj[0].name, obj[0].age, obj[0].course, obj[0].spec);
+        }
+        public static void Main(string[] args)
+        {
+            List<Student> Stud = new List<Student>();
+            Console.WriteLine("Введите данные");
+            Student A1 = new Student(1, "", "", 1, 1, "");
+            Console.WriteLine("id:");
+            A1.id = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Фамилия:");
+            A1.surname = Console.ReadLine();
+            Console.WriteLine("Имя:");
+            A1.name = Console.ReadLine();
+            Console.WriteLine("Возраст:");
+            A1.age = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Курс:");
+            A1.course = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Специальность:");
+            A1.spec = Console.ReadLine();
+            Stud.Add(A1);
+            ShowInfo(Stud);
+            Console.ReadKey();
+        }
+    }
+}
