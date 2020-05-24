@@ -1,0 +1,94 @@
+using System;
+using System.Collections.Generic;
+
+namespace Zad_1
+{
+    class Transport
+    {
+        public
+        String type;
+        double weight;
+        double horse_power;
+        public Transport(string t, double w, double hp)
+        {
+            type = t;
+            Weight = w;
+            Horse_power = hp;
+        }
+        public double Weight
+        {
+            get { return weight; }
+            set { weight = value < 0 ? -value : value; }
+        }
+        public double Horse_power
+        {
+            get { return horse_power; }
+            set { horse_power = value < 0 ? value : value; }
+        }
+        public void Vvod_Transport()
+        {
+            type = Console.ReadLine();
+            
+            weight = Convert.ToDouble(Console.ReadLine());
+            horse_power = Convert.ToDouble(Console.ReadLine());
+
+        }
+    }
+    class Auto : Transport
+    {
+        public String Drive;
+        public String Gear_box;
+        public Auto (string t, double w, double hp, string d, string g) : base (t, w, hp)
+        {
+            Drive = d;
+            Gear_box = g;
+        }
+    }
+
+    class Brand : Auto
+    {
+        public String Model;
+        public String Brand_auto;
+       
+        public Brand (string t, double w, double hp, string d, string g, string M, string B) : base (t, w, hp, d, g)
+        {
+            Model = M;
+            Brand_auto = B;
+        }
+    }
+
+    class Program
+    {
+        static void ShowInfo(List<Brand> obj)
+        {
+            Console.WriteLine("\n\n----Информация о автомобилe----");
+            Console.WriteLine($"\nТип: {obj[0].type}\nМасса: {obj[0].Weight}\nМощность: {obj[0].Horse_power}");
+            Console.WriteLine($"Тип привода: {obj[0].Drive}\nТип КПП: {obj[0].Gear_box}\nМарка: {obj[0].Brand_auto}\nМодель: {obj[0].Model}");
+
+        }
+        static void Main(string[] args)
+        {
+            List<Brand> Auto = new List<Brand>();
+            Console.WriteLine("Введите данные:\n");
+            Brand B1 = new Brand("", 1, 1, "", "", "", "");
+            
+                Console.WriteLine("Введите тип: ");
+                B1.type = Console.ReadLine();
+                Console.WriteLine("Введите массу: ");
+                B1.Weight = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Введите мощность: ");
+                B1.Horse_power = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Введите тип привода: ");
+                B1.Drive = Console.ReadLine();
+                Console.WriteLine("Введите тип КПП: ");
+                B1.Gear_box = Console.ReadLine();
+                Console.WriteLine("Введите марку: ");
+                B1.Brand_auto = Console.ReadLine();
+                Console.WriteLine("Введите модель: ");
+                B1.Model = Console.ReadLine();
+
+            Auto.Add(B1);
+            ShowInfo(Auto);
+        }
+    }
+}
