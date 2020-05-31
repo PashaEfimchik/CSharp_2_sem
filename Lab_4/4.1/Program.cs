@@ -57,7 +57,7 @@ namespace Lab_4
                         }
                         if (((Keys)i) == Keys.F12)
                         {
-                            Environment.Exit(0);
+                            return;
                         }
                     }
                 }
