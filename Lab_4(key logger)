@@ -11,7 +11,6 @@ namespace Lab_4
 {
     static class Program
     {
-
         [STAThread]
         [DllImport("user32.dll")]
         public static extern int GetAsyncKeyState(Int32 i);
